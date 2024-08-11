@@ -19,6 +19,12 @@ export default {
 
   default:{
     icon_primary:"#1B1B1B",
-    icon_secondary:"#8C8C8C"
+    icon_secondary:"#8C8C8C",
+    bg_territary:"#EEF3F7",
+    icon_territary:"#626262",
+    bg_primary:"#ffffff",
+    line:"#D9D9D9",
+    blue:"#216AC3",
+    text_bold:"#424242"
   }
 };

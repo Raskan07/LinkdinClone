@@ -1,18 +1,33 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Pressable, TextInput, View,Text, TouchableOpacity } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
-import Octicons from '@expo/vector-icons/Octicons';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { DEFAULT_ICON_SIZE } from '@expo/vector-icons/build/createIconSet';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import ProfileAvatar from '@/components/ui/ProfileAvatar';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
+
+const SearchBar = () => {
+  return (
+    <TouchableOpacity style={{backgroundColor:Colors.default.bg_territary,flexDirection:"row",padding:2,paddingTop:2,paddingBottom:2,borderRadius:7,alignItems:"center",width:"105%"}}>
+      <Ionicons name="search" size={24} color={Colors.default.icon_territary} style={{paddingLeft:5,marginRight:0}} />
+      <View style={{padding:3,width:"90%"}}>
+        <Text style={{color:Colors.default.icon_territary,fontSize:16}}>Search</Text>
+      </View>
+    </TouchableOpacity>
+  )
+}
+
+
+
+
+
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
@@ -28,7 +43,22 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors.default.icon_primary,
         tabBarInactiveTintColor:Colors.default.icon_secondary,
+        headerShadowVisible:false,
         headerShown: useClientOnlyValue(false, true),
+        headerLeft:() => (
+          <ProfileAvatar />
+        ),
+        headerRight : () => (
+          <AntDesign name="message1" size={22} color="black"  style={{marginRight:18,}}/>
+        ),
+
+        headerTitle: () => (
+          <SearchBar />
+        ),
+
+        
+
+
       }}>
       <Tabs.Screen
         name="index"
@@ -68,3 +98,5 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+
